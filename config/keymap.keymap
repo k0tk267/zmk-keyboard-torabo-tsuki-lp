@@ -7,7 +7,9 @@
 &pointing_listener {
     scroller {
         layers = <3>;
-        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 16>;
+        input-processors =
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 16>;
     };
 };
 
@@ -55,11 +57,11 @@
 
         layer_1 {
             bindings = <
-&none  &none           &none         &none         &none         &none                        &none  &none  &none             &none              &none          &none
-&none  &kp ESCAPE      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS                    &none  &none  &none             &none              &none          &none
-&none  &kp GRAVE       &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL  &none      &none  &none  &none  &none             &none              &kp ENTER      &none
-&none  &kp SQT         &kp N7        &kp N8        &kp N9        &kp N0     &kp ENTER  &none  &none  &none  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMICOLON  &none
-&none  &kp LEFT_SHIFT  &kp LEFT_GUI  &none         &none         &none      &none      &none  &none  &none  &none             &kp BACKSLASH      &kp SLASH      &none
+&none  &none           &none         &none         &none         &none                          &none  &none  &none             &none              &none          &none
+&none  &kp ESCAPE      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS                      &none  &none  &none             &none              &none          &none
+&none  &kp GRAVE       &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL  &none      &none    &none  &none  &none             &none              &kp ENTER      &none
+&none  &kp SQT         &kp N7        &kp N8        &kp N9        &kp N0     &kp ENTER  &none    &none  &none  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMICOLON  &none
+&none  &kp LEFT_SHIFT  &kp LEFT_GUI  &none         &none         &none      &none      &kp TAB  &none  &none  &none             &kp BACKSLASH      &kp SLASH      &none
             >;
         };
 
