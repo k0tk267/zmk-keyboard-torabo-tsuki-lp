@@ -2,6 +2,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 &pointing_listener {
     scroller {
@@ -82,11 +83,11 @@
 
         layer_2 {
             bindings = <
-&none  &none  &none  &none  &none  &none                                               &none           &none           &none         &none            &none          &none
-&none  &none  &none  &none  &none  &none                                               &none           &none           &none         &none            &kp BACKSPACE  &none
-&none  &none  &none  &none  &none  &none                 &none                  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &none          &none
-&none  &none  &none  &none  &none  &none                 &none                  &none  &none           &none           &none         &none            &none          &none
-&none  &none  &none  &none  &none  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &none  &none           &none           &none         &none            &none          &none
+&none  &none  &none      &none  &none      &none                                               &none           &none           &none         &none            &none          &none
+&none  &none  &mkp RCLK  &none  &mkp LCLK  &none                                               &none           &none           &none         &none            &kp BACKSPACE  &none
+&none  &none  &none      &none  &none      &none                 &none                  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &none          &none
+&none  &none  &none      &none  &none      &none                 &none                  &none  &none           &none           &none         &none            &none          &none
+&none  &none  &none      &none  &none      &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &none  &none           &none           &none         &none            &none          &none
             >;
         };
 
