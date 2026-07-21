@@ -2,20 +2,6 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-// 自動マウスレイヤー用の temp-layer 設定。
-// require-prior-idle-ms: 直近のキー入力から150ms間はレイヤーをONにしない
-//   (タイピング中にボールを触っても誤ってマウスレイヤーに切り替わらない)。
-// excluded-positions: マウスキー(W/E/R/D=14/15/16/27)を押してもレイヤーを
-//   解除しない(連続クリック可)。それ以外のキーを押すと即座に通常へ復帰する。
-&zip_temp_layer {
-    require-prior-idle-ms = <150>;
-    excluded-positions = <14 15 16 27>;
-};
-
 &pointing_listener {
-    // ボール移動でカーソルは今まで通り動き、加えて layer_4(マウスレイヤー)を
-    // 300ms間 有効化する。<layer timeout_ms> = <4 300>。手を止めて300ms無操作で自動解除。
-    input-processors =
-        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_temp_layer 4 300>;
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 };
