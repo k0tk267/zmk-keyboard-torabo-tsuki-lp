@@ -2,6 +2,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 &pointing_listener {
     scroller {
@@ -26,6 +27,23 @@
             quick-tap-ms = <0>;
             hold-trigger-key-positions = <14 15 16 27>;
             bindings = <&mo>, <&kp>;
+        };
+
+        // Ctrl(左右どちらでも)を押しながらだと R=左クリック / W=右クリックに化ける。
+        // 単押しなら通常どおり R / W を入力する。Ctrl修飾はクリック送出時にマスク
+        // されるので「Ctrl+クリック」ではなく素のクリックが送られる。
+        lclk_r: mod_morph_lclk_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp R>, <&mkp LCLK>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        rclk_w: mod_morph_rclk_w {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp W>, <&mkp RCLK>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
         };
     };
 
@@ -63,7 +81,7 @@
         layer_0 {
             bindings = <
 &none  &none                   &none  &none    &none  &none                                       &none        &none            &none      &none          &none            &none
-&none  &lt_mouse 2 Q           &kp W  &lt 3 E  &kp R  &kp T                                       &kp Y        &kp U            &kp I      &kp O          &kp P            &none
+&none  &lt_mouse 2 Q           &rclk_w  &lt 3 E  &lclk_r  &kp T                                   &kp Y        &kp U            &kp I      &kp O          &kp P            &none
 &none  &kp A                   &kp S  &kp D    &kp F  &kp G           &none         &none         &kp H        &kp J            &kp K      &kp L          &kp RETURN       &none
 &none  &kp Z                   &kp X  &kp C    &kp V  &kp B           &none         &screen_shot  &kp N        &kp M            &kp COMMA  &kp DOT        &kp RIGHT_SHIFT  &none
 &none  &mt LEFT_CONTROL LANG2  &none  &none    &none  &lt 1 LEFT_ALT  &kp LEFT_GUI  &kp TAB       &lt 2 SPACE  &kp RIGHT_SHIFT  &none      &kp RIGHT_ALT  &mt RCTRL LANG1  &none
